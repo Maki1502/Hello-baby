@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">HELLoBABY</string>
     <string name="lastPeriod">Podaj datę ostatniej miesiączki</string>
+    <string name="babyShower">Baby Shower zorganizuj w dniach:</string>
+    <string name="genderReveal">Gender Reveal zorganizuj w dniach:</string>
+    <string name="birthDate">Spodziewany poród:</string>
 </resources>
