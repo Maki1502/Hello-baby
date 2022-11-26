@@ -2,68 +2,41 @@ package edu.ib.hellobaby
 
 
 import android.Manifest
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_search -> {
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_add -> {
-                moveToFragment(CalFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_notifications -> {
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_settings -> {
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         readPermission()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
-        moveToFragment(CalFragment())
+        testButton.setOnClickListener {
+            val intent = Intent(this, CalculateDates::class.java)
+            startActivity(intent)
+        }
     }
 
     //Function for asking for permission to write and read Google Calendar
-    private fun readPermission() =
+    public fun readPermission() =
         ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.READ_CALENDAR
         ) == PackageManager.PERMISSION_GRANTED
 
-    private fun writePermission() =
+    public fun writePermission() =
         ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.WRITE_CALENDAR
         ) == PackageManager.PERMISSION_GRANTED
 
-    fun requestPermissions() {
+    public fun requestPermissions() {
         var permissionsToRequest = mutableListOf<String>()
         if (!readPermission()) {
             permissionsToRequest.add(Manifest.permission.READ_CALENDAR)
@@ -92,9 +65,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    private fun moveToFragment(fragment: Fragment) {
-        val fragmentTrans = supportFragmentManager.beginTransaction()
-        fragmentTrans.replace(R.id.fragment_container, fragment)
-        fragmentTrans.commit()
-    }
 }
