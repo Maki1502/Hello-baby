@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_cal.view.*
 import java.util.*
 
 
-class calFragment : Fragment(R.layout.fragment_cal) {
+class CalFragment : Fragment(R.layout.fragment_cal) {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

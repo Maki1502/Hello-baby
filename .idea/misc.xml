@@ -7,14 +7,12 @@
         <entry key="..\:/PWR/Android/Rejestr-ci-/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/PWR/Android/Rejestr-ci-/app/src/main/res/layout/activity_sign_in.xml" value="0.22826086956521738" />
         <entry key="..\:/PWR/Android/Rejestr-ci-/app/src/main/res/layout/activity_sign_up.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/asiak/StudioProjects/Rejestr/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/asiak/StudioProjects/Rejestr/app/src/main/res/layout/baby_shower_cal.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/asiak/StudioProjects/Rejestr/app/src/main/res/layout/fragment_cal.xml" value="0.264" />
-        <entry key="..\:/Users/asiak/StudioProjects/Rejestr/app/src/main/res/layout/fragment_container.xml" value="0.22864583333333333" />
+        <entry key="..\:/PWR/Android/Rejestr-ci-/app/src/main/res/layout/fragment_cal.xml" value="0.22826086956521738" />
+        <entry key="..\:/PWR/Android/Rejestr-ci-/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

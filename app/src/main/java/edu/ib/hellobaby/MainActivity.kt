@@ -6,30 +6,64 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_search -> {
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_add -> {
+                moveToFragment(CalFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_notifications -> {
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_settings -> {
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         readPermission()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+        moveToFragment(CalFragment())
     }
 
     //Function for asking for permission to write and read Google Calendar
-    public fun readPermission() =
+    private fun readPermission() =
         ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.READ_CALENDAR
         ) == PackageManager.PERMISSION_GRANTED
 
-    public fun writePermission() =
+    private fun writePermission() =
         ActivityCompat.checkSelfPermission(
             this,
             Manifest.permission.WRITE_CALENDAR
         ) == PackageManager.PERMISSION_GRANTED
 
-    public fun requestPermissions() {
+    fun requestPermissions() {
         var permissionsToRequest = mutableListOf<String>()
         if (!readPermission()) {
             permissionsToRequest.add(Manifest.permission.READ_CALENDAR)
@@ -58,4 +92,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    private fun moveToFragment(fragment: Fragment) {
+        val fragmentTrans = supportFragmentManager.beginTransaction()
+        fragmentTrans.replace(R.id.fragment_container, fragment)
+        fragmentTrans.commit()
+    }
 }
