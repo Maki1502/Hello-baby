@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             val intent = Intent(this, CalculateDates::class.java)
             startActivity(intent)
         }
+
+        fragmentButton.setOnClickListener {
+            val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     //Function for asking for permission to write and read Google Calendar

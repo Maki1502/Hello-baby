@@ -36,19 +36,16 @@
         android:text="Oblicz"
         android:textSize="28dp"
         android:layout_gravity="center_horizontal"/>
-
-    <TextView
-        android:id="@+id/testText"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="Name" />
+        android:layout_height="280dp"/>
 
-    <!--
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"/>
-        -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/datesPager"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:orientation="horizontal"/>
 
 </LinearLayout>
