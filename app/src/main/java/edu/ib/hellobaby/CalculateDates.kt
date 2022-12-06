@@ -30,8 +30,9 @@ class CalculateDates : AppCompatActivity() {
         setContentView(R.layout.activity_calculate_dates)
 
         val sharedPrefFile = "kotlinsharedpreference"
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,
-            Context.MODE_PRIVATE)
+        // val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,
+        //    Context.MODE_PRIVATE)
+        val sharedPreference =  getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         // Function to get actual date from system calendar
         getDate.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
@@ -41,7 +42,6 @@ class CalculateDates : AppCompatActivity() {
             calender.set(year, month, dayOfMonth)
             // Now set calenderView with this calender object to highlight selected date on UI.
             calView.setDate(calender.timeInMillis, true, true)
-            Log.d("data systemowa", "$calender")
         }
 
         // Function to get date from calendar
@@ -57,10 +57,6 @@ class CalculateDates : AppCompatActivity() {
             val selectedYear = DateFormat.format("yyyy", date).toString().toInt()
             var localDate = LocalDate.of(selectedYear, selectedMonthNumber, selectedDay)
 
-            // Save period date
-            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
-            editor.putLong("periodDate", dateMillis)
-
             var pregnacy = Period.of(0, 0, 270)
             var birthDate = localDate.plus(pregnacy)
             Log.d("mod date", "$birthDate")
@@ -74,6 +70,15 @@ class CalculateDates : AppCompatActivity() {
             val showerLength = Period.of(0,0,210)
             val babyShower = localDate.plus(showerLength)
             Log.d("baby", "$babyShower")
+
+            // Save dates
+            val editor:SharedPreferences.Editor =  sharedPreference.edit()
+            editor.putLong("periodDate", dateMillis)
+            editor.putString("birthDate", birthDate.toString())
+            editor.putString("genderRevealDate", genderReveal.toString())
+            editor.putString("babyShowerDate", babyShower.toString())
+            editor.apply()
+            editor.commit()
         }
 
     }
