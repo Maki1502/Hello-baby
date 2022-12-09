@@ -17,6 +17,13 @@
         android:theme="@style/Theme.HELLoBABY"
         tools:targetApi="31">
         <activity
+            android:name=".BookingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".TestActivity"
             android:exported="false">
             <meta-data
