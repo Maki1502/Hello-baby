@@ -1,7 +1,6 @@
 package edu.ib.hellobaby
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,8 +8,7 @@ import edu.ib.hellobaby.databinding.ItemHolderBinding
 
 
 class PagerAdapter(private val context: Context,
-                   private val labelList: MutableList<String>,
-                   private val colorList: MutableList<String>
+                   private val labelList: MutableList<String>
 ) : RecyclerView.Adapter<PagerAdapter.ViewPagerHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerHolder {
@@ -20,8 +18,7 @@ class PagerAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: ViewPagerHolder, position: Int) {
         val label = labelList[position]
-        val color = colorList[position]
-        holder.bind(label, color)
+        holder.bind(label)
     }
 
     override fun getItemCount(): Int {
@@ -30,9 +27,8 @@ class PagerAdapter(private val context: Context,
 
     class ViewPagerHolder(private var itemHolderBinding: ItemHolderBinding) :
         RecyclerView.ViewHolder(itemHolderBinding.root) {
-        fun bind(label: String, color: String) {
+        fun bind(label: String) {
             itemHolderBinding.label.text = label
-            itemHolderBinding.root.setBackgroundColor(Color.parseColor(color))
         }
     }
 }

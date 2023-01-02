@@ -68,7 +68,9 @@ class CalculateDates : AppCompatActivity() {
 
             // baby shower
             val showerLength = Period.of(0,0,210)
+            val showerLengthMax = Period.of(0, 0, 224)
             val babyShower = localDate.plus(showerLength)
+            val babyShowerMax = localDate.plus(showerLengthMax)
             Log.d("baby", "$babyShower")
 
             // Save dates
@@ -79,8 +81,26 @@ class CalculateDates : AppCompatActivity() {
             editor.putString("babyShowerDate", babyShower.toString())
             editor.apply()
             editor.commit()
-        }
 
+            val list: MutableList<String> = ArrayList()
+            list.add("Spodziewana data porodu to: $birthDate")
+            list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
+            list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
+            // Set adapter to viewPager.
+            datesPager.adapter = PagerAdapter(this, list)
+
+        }
+        // setupViewPager2()
     }
+
+/*    private fun setupViewPager2() {
+        val list: MutableList<String> = ArrayList()
+        list.add("This is your First Screen")
+        list.add("This is your Second Screen")
+        list.add("This is your Third Screen")
+        list.add("This is your Fourth Screen")
+        // Set adapter to viewPager.
+        datesPager.adapter = PagerAdapter(this, list)
+    }*/
 
 }
