@@ -88,19 +88,6 @@ class CalculateDates : AppCompatActivity() {
             list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
             // Set adapter to viewPager.
             datesPager.adapter = PagerAdapter(this, list)
-
         }
-        // setupViewPager2()
     }
-
-/*    private fun setupViewPager2() {
-        val list: MutableList<String> = ArrayList()
-        list.add("This is your First Screen")
-        list.add("This is your Second Screen")
-        list.add("This is your Third Screen")
-        list.add("This is your Fourth Screen")
-        // Set adapter to viewPager.
-        datesPager.adapter = PagerAdapter(this, list)
-    }*/
-
 }
