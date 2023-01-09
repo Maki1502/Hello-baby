@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,30 +11,23 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/nav_view">
 
-    <Button
-        android:id="@+id/testButton"
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CalendarButton" />
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav_menu" />
 
-
-    <Button
-        android:id="@+id/fragmentButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="FragmentButton" />
-
-    <ImageView
-        android:id="@+id/welcome"
-        android:layout_width="match_parent"
-        android:layout_height="347dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:srcCompat="@drawable/welcome"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-</LinearLayout>
+</RelativeLayout>
 
 
