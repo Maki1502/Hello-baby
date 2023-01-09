@@ -20,6 +20,10 @@ class SignInActivity : AppCompatActivity() {
 
         login_btn.setOnClickListener {
             loginUser()
+
+        }
+        data_btn.setOnClickListener {
+            database()
         }
     }
 
