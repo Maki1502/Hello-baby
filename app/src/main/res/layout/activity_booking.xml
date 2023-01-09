@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:context=".BookingActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:layout_gravity="center_horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/bookingText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/smaticsc"
+            android:gravity="bottom|center_horizontal"
+            android:letterSpacing="0.06"
+            android:text="Zaplanuj wizytę"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <CalendarView
+            android:id="@+id/bookingCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minDate="01/01/2020"
+            android:background="@color/backgroundCal"
+            android:firstDayOfWeek="2"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/smaticsc"
+            android:gravity="bottom|center_horizontal"
+            android:letterSpacing="0.06"
+            android:text="Czas rozpoczęcia"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/smaticb"
+                android:gravity="center|end"
+                android:text="godz"
+                android:textAlignment="textEnd"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/backgroundCal"
+                android:entries="@array/hours"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/smaticsc"
+                android:gravity="center|end"
+                android:text="min"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/backgroundCal"
+                android:entries="@array/minutes" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:minHeight="80dp">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:fontFamily="@font/smaticsc"
+            android:layout_gravity="center_vertical"
+            android:letterSpacing="0.06"
+            android:text="Czas trwania"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:background="@color/backgroundCal"
+            android:entries="@array/duration" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:minHeight="80dp">
+
+            <TextView
+                android:id="@+id/textView586"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="@font/smaticsc"
+                android:layout_gravity="center_vertical"
+                android:letterSpacing="0.06"
+                android:text="Rodzaj wizyty"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:background="@color/backgroundCal"
+                android:entries="@array/types" />
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/smaticsc"
+            android:text="Czy chcesz dodać xxx?"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+        <Button
+            android:id="@+id/bookButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/smaticb"
+            android:letterSpacing="0.1"
+            android:text="Dodaj!"
+            android:textColor="@color/backgroundCal"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+    </LinearLayout>
+
+</ScrollView>
