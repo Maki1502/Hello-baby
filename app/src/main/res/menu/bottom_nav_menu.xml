@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/home"
         android:title="Home" />
 
     <item
         android:id="@+id/navigation_search"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/search"
         android:title="Search" />
 
     <item
-        android:id="@+id/navigation_add"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Add new" />
+        android:id="@+id/navigation_baby"
+        android:icon="@drawable/no_baby"
+        android:title="Baby" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Notifs" />
+        android:id="@+id/navigation_date"
+        android:icon="@drawable/calendar"
+        android:title="Dates" />
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/settings"
         android:title="Settings"/>
 
 </menu>
