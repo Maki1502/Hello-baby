@@ -1,18 +1,23 @@
 package edu.ib.hellobaby.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import edu.ib.hellobaby.R
 import edu.ib.hellobaby.adapter.InfoAdapter
 import edu.ib.hellobaby.model.Info
@@ -58,33 +63,22 @@ class SearchFragment : Fragment() {
         return view
     }
 
-    private fun searchInfo(input: String) {
-
-        val query = FirebaseDatabase.getInstance().reference
-            .child("Plants")
-            .orderByChild("infoname")
-            .startAt(input)
-            .endAt(input + "\uf8ff")
-
-        query.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                mInfo?.clear()
-                for (snapshot in dataSnapshot.children) {
-                    val info = snapshot.getValue(Info::class.java)
-                    if (info != null) {
-                        mInfo?.add(info)
-                    }
+    private fun searchInfo(input: String): DocumentReference {
+       val data=input
+        val db = Firebase.firestore
+        val test= db.collection("week").document(data)
+        test.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
                 }
-
-                infoAdapter?.notifyDataSetChanged()
             }
-
-            override fun onCancelled(error: DatabaseError) { }
-
-        })
-
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+        return test
     }
     private fun retrieveInfo() {
         val usersRef = FirebaseDatabase.getInstance().reference.child("Plants")
