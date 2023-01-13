@@ -22,9 +22,6 @@ class SignInActivity : AppCompatActivity() {
             loginUser()
 
         }
-        data_btn.setOnClickListener {
-            database()
-        }
     }
 
     private fun loginUser() {

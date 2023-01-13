@@ -35,19 +35,27 @@
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
+                    android:layout_toEndOf="@+id/search_fragment_icon"
                     android:hint="Search..."
-                    android:layout_toEndOf="@+id/search_fragment_icon"/>
+                    android:inputType="text" />
 
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_search"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/SingleTextViev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/app_bar_layout_search"
-        tools:listitem="@layout/info_item_layout"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="302dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="356dp"
+        android:text="TextView" />
 
 </RelativeLayout>
