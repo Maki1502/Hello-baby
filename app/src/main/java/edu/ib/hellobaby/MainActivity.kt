@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         moveToFragment(HomeFragment())
 
+
+
+
     }
 
     //Function for asking for permission to write and read Google Calendar
@@ -108,4 +111,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTrans.replace(R.id.fragment_container, fragment)
         fragmentTrans.commit()
     }
+
+
 }

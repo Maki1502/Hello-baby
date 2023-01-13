@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SearchFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <EditText
+        android:id="@+id/srch_edt_txt"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Search..."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/app_bar_layout_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/app_bar_layout_search"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/search_toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="4dp"
             android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
             android:layout_marginRight="6dp">
 
             <RelativeLayout
@@ -27,27 +48,12 @@
                     android:id="@+id/search_fragment_icon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/search"
-                    android:layout_alignParentLeft="true"/>
-
-                <EditText
-                    android:id="@+id/srch_edt_txt"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:hint="Search..."
-                    android:layout_toEndOf="@+id/search_fragment_icon"/>
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/search" />
 
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_search"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/app_bar_layout_search"
-        tools:listitem="@layout/info_item_layout"/>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

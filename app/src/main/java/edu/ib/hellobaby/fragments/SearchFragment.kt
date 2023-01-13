@@ -16,92 +16,65 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import edu.ib.hellobaby.R
 import edu.ib.hellobaby.adapter.InfoAdapter
 import edu.ib.hellobaby.model.Info
+import kotlinx.android.synthetic.main.activity_booking.view.*
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
+import kotlinx.android.synthetic.main.single_search_layout.view.*
 
 class SearchFragment : Fragment() {
-
+     val firebaseFirestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var recyclerView: RecyclerView? = null
-    private var infoAdapter: InfoAdapter? = null
-    private var mInfo: MutableList<Info>? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-
-        recyclerView = view.findViewById(R.id.rv_search)
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.layoutManager = LinearLayoutManager(context)
-
-        mInfo = ArrayList()
-        infoAdapter = context?.let { InfoAdapter(it, mInfo as ArrayList<Info>, true) }
-        recyclerView?.adapter = infoAdapter
-
-        view.srch_edt_txt.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+    class SearchLine(var searchList: List<SearchModel>):RecyclerView.Adapter<SearchLine.SearchListVievHolder>() {
+        class SearchListVievHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            fun bind(searchModel: SearchModel) {
+                itemView.single_search.text = searchModel.funfact
             }
-
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (view.srch_edt_txt.text.toString() != "") {
-                    recyclerView?.visibility = View.VISIBLE
-                    retrieveInfo()
-                    searchInfo(p0.toString().lowercase())
-                }
-            }
-        })
-
-        return view
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchListVievHolder {
+            val view =
+                LayoutInflater.from(parent.context).inflate(R.layout.single_search_layout, parent, false)
+            return SearchListVievHolder(view)
+        }
+        override fun onBindViewHolder(holder: SearchListVievHolder, position: Int) {
+            holder.bind(searchList[position])
+        }
+        override fun getItemCount(): Int {
+            return searchList.size
+        }
     }
+    private var searchList: List<SearchModel> = ArrayList()
+    private val searchLine = SearchLine(searchList)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        search_list.hasFixedSize()
+        search_list.layoutManager=LinearLayoutManager(this.context)
+        search_list.adapter=searchLine
+        srch_edt_txt.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable?) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val searchText : String = srch_edt_txt.text.toString()
+                searchInFirestore(searchText) }
 
-    private fun searchInfo(input: String): DocumentReference {
-       val data=input
-        val db = Firebase.firestore
-        val test= db.collection("week").document(data)
-        test.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-        return test
-    }
-    private fun retrieveInfo() {
-        val usersRef = FirebaseDatabase.getInstance().reference.child("Plants")
-        usersRef.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (view?.srch_edt_txt?.text.toString() == "") {
-                    mInfo?.clear()
-
-                    for (snapshot in dataSnapshot.children) {
-                        val info = snapshot.getValue(Info::class.java)
-                        if (info != null) {
-                            mInfo?.add(info)
+            private fun searchInFirestore(searchText: String) {
+                firebaseFirestore.collection("Test").orderBy("test1")
+                    .startAt(searchText).endAt("$searchText\uf8ff")
+                    .get().addOnCompleteListener {
+                        if(it.isSuccessful){
+                            searchList=it.result!!.toObjects(SearchModel::class.java)
+                            searchLine.searchList=searchList
+                            searchLine.notifyDataSetChanged()
+                        }else{
+                            Log.d(TAG,"Error409")
                         }
                     }
-
-                    infoAdapter?.notifyDataSetChanged()
-                }
             }
-
-            override fun onCancelled(error: DatabaseError) { }
-
         })
     }
-
 }
