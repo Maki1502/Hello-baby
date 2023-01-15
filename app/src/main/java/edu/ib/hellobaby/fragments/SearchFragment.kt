@@ -28,41 +28,54 @@ import kotlinx.android.synthetic.main.fragment_search.view.*
 import kotlinx.android.synthetic.main.single_search_layout.view.*
 
 class SearchFragment : Fragment() {
+     
      val firebaseFirestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var recyclerView: RecyclerView? = null
+     
     class SearchLine(var searchList: List<SearchModel>):RecyclerView.Adapter<SearchLine.SearchListVievHolder>() {
+         
         class SearchListVievHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+             
             fun bind(searchModel: SearchModel) {
                 itemView.single_search.text = searchModel.funfact
             }
         }
+        
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchListVievHolder {
             val view =
                 LayoutInflater.from(parent.context).inflate(R.layout.single_search_layout, parent, false)
             return SearchListVievHolder(view)
         }
+        
         override fun onBindViewHolder(holder: SearchListVievHolder, position: Int) {
             holder.bind(searchList[position])
         }
+        
         override fun getItemCount(): Int {
             return searchList.size
         }
     }
+    
     private var searchList: List<SearchModel> = ArrayList()
     private val searchLine = SearchLine(searchList)
+    
     override fun onCreate(savedInstanceState: Bundle?) {
+         
         super.onCreate(savedInstanceState)
         search_list.hasFixedSize()
         search_list.layoutManager=LinearLayoutManager(this.context)
         search_list.adapter=searchLine
         srch_edt_txt.addTextChangedListener(object:TextWatcher{
+             
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable?) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val searchText : String = srch_edt_txt.text.toString()
-                searchInFirestore(searchText) }
+                searchInFirestore(searchText) 
+            }
 
             private fun searchInFirestore(searchText: String) {
+                 
                 firebaseFirestore.collection("Test").orderBy("test1")
                     .startAt(searchText).endAt("$searchText\uf8ff")
                     .get().addOnCompleteListener {
