@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import edu.ib.hellobaby.fragments.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 const val DEFAULT_REMINDER_HOUR = 21
 const val DEFAULT_REMINDER_MINUTE = 37
@@ -27,8 +26,9 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_search -> {
-                moveToFragment(SearchFragment())
+            R.id.navigation_search-> {
+                item.isChecked = false
+                startActivity(Intent(this@MainActivity, SearchActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
 
