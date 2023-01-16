@@ -1,6 +1,8 @@
 package edu.ib.hellobaby.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import edu.ib.hellobaby.R
 import edu.ib.hellobaby.SignInActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.fragment_options.*
 import kotlinx.android.synthetic.main.fragment_options.view.*
 
 class OptionsFragment : Fragment() {
@@ -33,10 +37,19 @@ class OptionsFragment : Fragment() {
             startActivity(intent)
         }
 
-//        view.change_info.setOnClickListener {
-//            val intent = Intent(context, ChangeInfoActivity::class.java)
-//            startActivity(intent)
-//        }
+        apply_btn.setOnClickListener {
+            val zaimki = zaimki_edtxt.text.toString()
+            val sherPref = "zaimki"
+
+            val pref = this.activity?.getSharedPreferences(sherPref, Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor? = pref?.edit()
+
+            if (editor != null) {
+                editor.putString("pronouns", zaimki)
+                editor.apply()
+                editor.commit()
+            }
+        }
 
         return view
     }

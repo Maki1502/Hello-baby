@@ -47,25 +47,12 @@
         android:textColor="@color/black"
         android:hint="Password..."/>
 
-    <EditText
-        android:id="@+id/zaimki_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:layout_below="@+id/password_signup"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="6dp"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:hint="Pronouns"/>
 
     <Button
         android:id="@+id/signup_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/zaimki_signup"
+        android:layout_below="@+id/password_signup"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="6dp"

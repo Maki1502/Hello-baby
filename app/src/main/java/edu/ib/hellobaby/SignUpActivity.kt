@@ -30,15 +30,6 @@ class SignUpActivity : AppCompatActivity() {
     private fun createAccount() {
         val email = email_signup.text.toString()
         val password = password_signup.text.toString()
-        val zaimki = zaimki_signup.text.toString()
-
-        val sharedPrefFile = "zaimki"
-        val sharedPreference =  getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        // Save data
-        val editor: SharedPreferences.Editor =  sharedPreference.edit()
-        editor.putString("pronouns", zaimki)
-        editor.apply()
-        editor.commit()
 
         when {
             TextUtils.isEmpty(email) -> Toast.makeText(this, "email is required", Toast.LENGTH_LONG).show()
