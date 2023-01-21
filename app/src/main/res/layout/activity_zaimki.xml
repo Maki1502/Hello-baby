@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ZaimkiActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/shape"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txt"
+        android:text="Podaj dane"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/zaimki_spin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt"
+        android:layout_margin="45dp"/>
+
+    <Spinner
+        android:id="@+id/wiek_spin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/zaimki_spin"
+        android:layout_margin="50dp"/>
+
+    <Spinner
+        android:id="@+id/plec_spin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wiek_spin"
+        android:layout_margin="50dp"/>
+
+    <Button
+        android:id="@+id/save1_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plec_spin"
+        android:backgroundTint="@color/roz"
+        android:layout_margin="50dp"
+        android:text="Zapisz"/>
+
+</RelativeLayout>

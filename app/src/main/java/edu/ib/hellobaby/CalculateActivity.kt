@@ -4,25 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.icu.text.MessageFormat.format
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.text.format.DateFormat.format
 import android.util.Log
-import android.widget.Adapter
 import android.widget.CalendarView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_calculate_dates.*
-import java.lang.String.format
-
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Period
 import java.util.*
 
-
-class CalculateDates : AppCompatActivity() {
+class CalculateActivity : AppCompatActivity() {
     @SuppressLint("CommitPrefEdits") // to sie samo pojawilo
 
 
@@ -75,7 +67,7 @@ class CalculateDates : AppCompatActivity() {
             Log.d("baby", "$babyShower")
 
             // Save dates
-            val editor:SharedPreferences.Editor =  sharedPreference.edit()
+            val editor: SharedPreferences.Editor =  sharedPreference.edit()
             editor.putLong("periodDate", dateMillis)
             editor.putString("birthDate", birthDate.toString())
             editor.putString("genderRevealDate", genderReveal.toString())
@@ -88,7 +80,7 @@ class CalculateDates : AppCompatActivity() {
             list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
             list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
             // Set adapter to viewPager.
-            datesPager.adapter = PagerAdapter(this, list)
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }

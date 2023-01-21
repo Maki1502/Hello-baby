@@ -1,4 +1,4 @@
-package edu.ib.hellobaby.fragments
+package edu.ib.hellobaby.search
 
 class SearchModel {
 val funfact: String=""

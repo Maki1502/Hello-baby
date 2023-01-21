@@ -7,10 +7,8 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import edu.ib.hellobaby.fragments.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 const val DEFAULT_REMINDER_HOUR = 21
 const val DEFAULT_REMINDER_MINUTE = 37
@@ -18,50 +16,30 @@ const val DEFAULT_REMINDER_MINUTE = 37
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-
-            R.id.navigation_home -> {
-                moveToFragment(HomeFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_search-> {
-                item.isChecked = false
-                startActivity(Intent(this@MainActivity, SearchActivity::class.java))
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_baby -> {
-                moveToFragment(BabyFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_date -> {
-                moveToFragment(DateFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-
-            R.id.navigation_settings -> {
-                moveToFragment(OptionsFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         readPermission()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        moveToFragment(HomeFragment())
+        baby_btn.setOnClickListener {
+            startActivity(Intent(this, BabyLoading::class.java))
+        }
 
+        book_btn.setOnClickListener {
+            startActivity(Intent(this, BookingActivity::class.java))
+        }
 
+        cal_del_btn.setOnClickListener {
+            startActivity(Intent(this, DeleteEvents::class.java))
+        }
 
+        srch_btn.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
 
+        sett_btn.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
     }
 
     //Function for asking for permission to write and read Google Calendar
@@ -105,12 +83,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun moveToFragment(fragment: Fragment) {
-        val fragmentTrans = supportFragmentManager.beginTransaction()
-        fragmentTrans.replace(R.id.fragment_container, fragment)
-        fragmentTrans.commit()
-    }
-
-
 }

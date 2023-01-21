@@ -1,4 +1,4 @@
-package edu.ib.hellobaby.fragments
+package edu.ib.hellobaby.search
 
 import android.view.LayoutInflater
 import android.view.View
