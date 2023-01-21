@@ -14,23 +14,47 @@
         android:orientation="vertical"
         tools:context=".CalculateDates">
 
-        <TextView
-            android:id="@+id/lastPeriod"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/smaticb"
-            android:text="@string/lastPeriod"
-            android:textAlignment="center"
-            android:textSize="38dp"
-            android:gravity="center_horizontal"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:background="@drawable/arrow"
+                android:gravity="center"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/lastPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/smaticb"
+                android:text="@string/lastPeriod"
+                android:textAlignment="center"
+                android:textSize="38dp"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
 
         <CalendarView
             android:id="@+id/getDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundCal"
             android:firstDayOfWeek="2"
-            android:minDate="01/01/2020"
-            android:background="@color/backgroundCal"/>
+            android:minDate="01/01/2020" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Data porodu"
+            android:textSize="32dp"
+            android:fontFamily="@font/smaticsc"/>
 
         <Button
             android:id="@+id/calcDatesButton"

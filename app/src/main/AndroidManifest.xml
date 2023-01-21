@@ -21,14 +21,17 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".BabyLoading"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteEvents"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TestActivity"
+            android:name=".BookingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

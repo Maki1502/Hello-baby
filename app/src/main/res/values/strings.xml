@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">HELLoBABY</string>
-    <string name="lastPeriod">Podaj datę ostatniej miesiączki</string>
+    <string name="lastPeriod">Podaj datę ostatniej miesiączki lub datę porodu wyznaczoną przez ginekologa</string>
     <string name="babyShower">Baby Shower zorganizuj w dniach:</string>
     <string name="genderReveal">Gender Reveal zorganizuj w dniach:</string>
     <string name="birthDate">Spodziewany poród:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="check_it">Check it</string>
     <string-array name="hours">
         <item>00</item>
         <item>01</item>
@@ -58,7 +59,21 @@
     </string-array>
 
     <string-array name="types">
+        <item>Konsultacja położnicza</item>
         <item>USG</item>
+        <item>USG 3D</item>
+        <item>USG prenatalne I / II / III trymestru</item>
         <item>KTG</item>
+        <item>Badania genetyczne</item>
+        <item>Echo serca płodu</item>
+        <item>Test zintegrowany I-go trymestru wg FMF</item>
+        <item>Indeks oceny wydolności łożyska i preeklampsji sFlt-1/PIGF</item>
+        <item>Szczepienie</item>
+        <item>Szkoła rodzenia</item>
+        <item>Konsultacja położnej</item>
+        <item>Porada laktacyjna</item>
+        <item>Badania laboraotryjne</item>
+        <item>Test ryzyka porodu przedwczesnego</item>
+        <item>Inne</item>
     </string-array>
 </resources>

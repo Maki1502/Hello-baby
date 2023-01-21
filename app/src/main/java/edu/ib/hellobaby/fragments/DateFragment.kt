@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import edu.ib.hellobaby.BookingActivity
-import edu.ib.hellobaby.CalculateDates
-import edu.ib.hellobaby.R
-import edu.ib.hellobaby.SignInActivity
+import edu.ib.hellobaby.*
 import kotlinx.android.synthetic.main.fragment_date.view.*
 
 class DateFragment : Fragment() {
@@ -29,6 +26,18 @@ class DateFragment : Fragment() {
 
         view.book_btn.setOnClickListener {
             val intent = Intent(context, BookingActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        view.dele_btn.setOnClickListener {
+            val intent = Intent(context, DeleteEvents::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
+        view.load_btn.setOnClickListener {
+            val intent = Intent(context, BabyLoading::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

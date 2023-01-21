@@ -32,4 +32,32 @@
         android:textColor="@color/black"
         android:layout_below="@+id/calc_btn"/>
 
+    <Button
+        android:id="@+id/load_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/white"
+        android:text="Baby loading"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/book_btn"/>
+
+    <Button
+        android:id="@+id/dele_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/white"
+        android:text="Delete events"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/load_btn"/>
+
 </RelativeLayout>
