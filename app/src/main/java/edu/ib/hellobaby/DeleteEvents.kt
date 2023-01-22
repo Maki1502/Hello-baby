@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
@@ -138,7 +139,6 @@ class DeleteEvents : AppCompatActivity() {
         // Create CheckBox
         val checkBox = CheckBox(this)
         checkBox.id = id.toInt()
-        checkBox.hint = hint
         checkBox.text = "$hint   $date"
         checkBox.layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
@@ -148,7 +148,7 @@ class DeleteEvents : AppCompatActivity() {
         checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) checkBoxes.add(checkBox.id.toString())
             val msg = "You have " + (if (isChecked) "checked" else "unchecked") + " this Checkbox."
-            Toast.makeText(this@DeleteEvents, msg, Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@DeleteEvents, msg, Toast.LENGTH_SHORT).show()
         }
         // Add CheckBox to LinearLayout
         checkBoxContainer.addView(checkBox)

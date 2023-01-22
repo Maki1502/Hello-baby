@@ -6,6 +6,19 @@
     <string name="birthDate">Spodziewany poród:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="check_it">Check it</string>
+    <string name="delete">Delete</string>
+    <string name="data_porodu">Data porodu</string>
+    <string name="oblicz">Oblicz</string>
+    <string name="zaplanuj_wizyt">Zaplanuj wizytę</string>
+    <string name="czas_rozpocz_cia">Czas rozpoczęcia</string>
+    <string name="godz">godz</string>
+    <string name="min">min</string>
+    <string name="czas_trwania">Czas trwania</string>
+    <string name="rodzaj_wizyty">Rodzaj wizyty</string>
+    <string name="dodaj">Dodaj!</string>
+    <string name="miesi_czka">Miesiączka</string>
+    <string name="por_d">Poród</string>
+    <string name="twoje_zap">Twoje zaplanowane wizyty:</string>
     <string-array name="hours">
         <item>00</item>
         <item>01</item>

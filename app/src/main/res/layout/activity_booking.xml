@@ -23,15 +23,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/returnButton2"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:background="@drawable/arrow"
-                android:gravity="center"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
             <TextView
                 android:id="@+id/bookingText"
                 android:layout_width="match_parent"
@@ -39,7 +30,7 @@
                 android:fontFamily="@font/smaticsc"
                 android:gravity="bottom|center_horizontal"
                 android:letterSpacing="0.06"
-                android:text="Zaplanuj wizytę"
+                android:text="@string/zaplanuj_wizyt"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="38sp"
@@ -51,9 +42,10 @@
             android:id="@+id/bookingCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minDate="01/01/2020"
             android:background="@color/backgroundCal"
-            android:firstDayOfWeek="2"/>
+            android:firstDayOfWeek="2"
+            android:minDate="01/01/2020" />
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
@@ -61,7 +53,7 @@
             android:fontFamily="@font/smaticsc"
             android:gravity="bottom|center_horizontal"
             android:letterSpacing="0.06"
-            android:text="Czas rozpoczęcia"
+            android:text="@string/czas_rozpocz_cia"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="24sp"
@@ -79,13 +71,13 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/smaticb"
                 android:gravity="center|end"
-                android:text="godz"
+                android:text="@string/godz"
                 android:textAlignment="textEnd"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/spinnerHours"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -100,13 +92,13 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/smaticsc"
                 android:gravity="center|end"
-                android:text="min"
+                android:text="@string/min"
                 android:textAlignment="textEnd"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/spinnerMin"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -127,13 +119,13 @@
             android:fontFamily="@font/smaticsc"
             android:layout_gravity="center_vertical"
             android:letterSpacing="0.06"
-            android:text="Czas trwania"
+            android:text="@string/czas_trwania"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/spinner_durat"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -155,13 +147,13 @@
                 android:fontFamily="@font/smaticsc"
                 android:layout_gravity="center_vertical"
                 android:letterSpacing="0.06"
-                android:text="Rodzaj wizyty"
+                android:text="@string/rodzaj_wizyty"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner4"
+                android:id="@+id/spinnerTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -170,6 +162,25 @@
                 android:entries="@array/types" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/et_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:text="Dodatkowe informacje"
+                android:fontFamily="@font/smaticsc"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="Suspicious0dp,TextContrastCheck" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/bookButton"
@@ -178,7 +189,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/smaticb"
             android:letterSpacing="0.1"
-            android:text="Dodaj!"
+            android:text="@string/dodaj"
             android:textColor="@color/backgroundCal"
             android:textSize="24sp"
             android:textStyle="bold"

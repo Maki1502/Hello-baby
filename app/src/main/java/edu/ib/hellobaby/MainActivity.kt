@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,7 +18,7 @@ const val DEFAULT_REMINDER_MINUTE = 37
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        readPermission()
+        requestPermissions()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -83,4 +84,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+/*    private fun moveToFragment(fragment: Fragment) {
+        val fragmentTrans = supportFragmentManager.beginTransaction()
+        fragmentTrans.replace(R.id.fragment_container, fragment)
+        fragmentTrans.commit()
+    }*/
 }

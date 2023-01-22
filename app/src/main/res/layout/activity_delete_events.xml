@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +9,24 @@
     tools:context=".DeleteEvents"
     android:id="@+id/checkBoxContainer">
 
-    <Button
+
+    <ImageButton
         android:id="@+id/del_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/delete"
+        android:drawableBottom="@drawable/delete"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="right"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:text="@string/twoje_zap"
+        android:textSize="32sp"
+        android:fontFamily="@font/smaticb"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
