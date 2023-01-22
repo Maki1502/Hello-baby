@@ -20,15 +20,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/returnButton"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:background="@drawable/arrow"
-                android:gravity="center"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
             <TextView
                 android:id="@+id/lastPeriod"
                 android:layout_width="match_parent"
