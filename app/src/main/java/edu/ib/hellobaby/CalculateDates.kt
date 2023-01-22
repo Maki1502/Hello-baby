@@ -18,7 +18,6 @@ import java.time.LocalDate
 import java.time.Period
 import java.util.*
 
-
 class CalculateDates : AppCompatActivity() {
     @SuppressLint("CommitPrefEdits")
 
@@ -51,10 +50,6 @@ class CalculateDates : AppCompatActivity() {
             calender.set(year, month, dayOfMonth)
             // Now set calenderView with this calender object to highlight selected date on UI.
             calView.setDate(calender.timeInMillis, true, true)
-        }
-
-        returnButton.setOnClickListener {
-
         }
 
         // Function to get date from calendar
