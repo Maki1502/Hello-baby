@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".BabyLoading">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/shape"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/loadingText"
         android:layout_width="wrap_content"
@@ -16,7 +25,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cryImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -25,5 +34,6 @@
         android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/clip_source" />
+        app:srcCompat="@drawable/clip_source"
+        android:background="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package edu.ib.hellobaby
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,60 +15,31 @@ class ZaimkiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_zaimki)
 
-        val zaimki = resources.getStringArray(R.array.zaimki)
-        val wiek = resources.getStringArray(R.array.wiek)
-        val plec = resources.getStringArray(R.array.plec)
-
-        if (zaimki_spin != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, zaimki)
-            zaimki_spin.adapter = adapter
-
-            zaimki_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    //val do wrzucenia wyniku
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                }
-
-            }
-        }
-
-        if (wiek_spin != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, wiek)
-            wiek_spin.adapter = adapter
-
-            wiek_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    //val do wrzucenia wyniku
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                }
-
-            }
-        }
-
-        if (plec_spin != null) {
-            val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, plec)
-            plec_spin.adapter = adapter
-
-            plec_spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    //val do wrzucenia wyniku
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-
-                }
-
-            }
-        }
+        val sharedPreference =  getSharedPreferences("shareddane", Context.MODE_PRIVATE)
 
         save1_btn.setOnClickListener {
-            //zapis wyników do shared
+
+            val zaimki = zaimki_spin.selectedItem.toString()
+            val zaimkiPos = zaimki_spin.selectedItemPosition
+            val wiek = wiek_spin.selectedItem.toString()
+            val wiekPos = wiek_spin.selectedItemPosition
+            val plec = plec_spin.selectedItem.toString()
+            val plecPos = plec_spin.selectedItemPosition
+            val imiePos = bb_spin.selectedItemPosition
+            val imie = bb_name.text.toString()
+
+            val editor: SharedPreferences.Editor =  sharedPreference.edit()
+            editor.putString("zaimki",zaimki)
+            editor.putInt("zaimkiSel",zaimkiPos)
+            editor.putString("wiek",wiek)
+            editor.putInt("wiekSel",wiekPos)
+            editor.putString("plec",plec)
+            editor.putInt("plecSel",plecPos)
+            editor.putInt("imieSel",imiePos)
+            editor.putString("nazwa",imie)
+            editor.apply()
+            editor.commit()
+
             startActivity(Intent(this, CalculateActivity::class.java))
         }
     }

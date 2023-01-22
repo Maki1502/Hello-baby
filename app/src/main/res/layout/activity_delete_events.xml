@@ -9,6 +9,13 @@
     tools:context=".DeleteEvents"
     android:id="@+id/checkBoxContainer">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/shape"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
 
     <ImageButton
         android:id="@+id/del_btn"
@@ -26,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/twoje_zap"
         android:textSize="32sp"
+        android:layout_marginLeft="5dp"
         android:fontFamily="@font/smaticb"
         android:textColor="@color/black"/>
 
