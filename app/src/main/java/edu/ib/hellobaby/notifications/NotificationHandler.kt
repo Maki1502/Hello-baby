@@ -25,10 +25,9 @@ object NotificationHandler {
 
         createNotificationChannel(context)
 
-
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_launcher_round)
-            .setContentTitle("Ciekawostka na dzisiaj!")
+            .setContentTitle("WAŻNE:")
             .setContentText("Aborcja jest OK")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)

@@ -5,8 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
     tools:context=".SignUpActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/shape"/>
 
     <TextView
         android:id="@+id/logo"
@@ -15,7 +20,7 @@
         android:text="HELLoBABY"
         android:textSize="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp"
         android:textAlignment="center"/>
 
@@ -28,10 +33,11 @@
         android:layout_below="@+id/logo"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="106dp"
         android:inputType="textEmailAddress"
         android:textColor="@color/black"
-        android:hint="E-mail..."/>
+        android:hint="E-mail..."
+        android:backgroundTint="#4AE91E63"/>
 
     <EditText
         android:id="@+id/password_signup"
@@ -45,7 +51,8 @@
         android:layout_marginTop="6dp"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:hint="Password..."/>
+        android:hint="Hasło..."
+        android:backgroundTint="#4AE91E63"/>
 
 
     <Button
@@ -56,11 +63,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="6dp"
-        android:background="@color/white"
-        android:text="Register"
+        android:text="Zarejestruj się"
         android:textAllCaps="false"
         android:textSize="17dp"
-        android:textColor="@color/black"/>
+        android:backgroundTint="@color/roz"/>
 
     <Button
         android:id="@+id/signin_btn_link"
@@ -71,9 +77,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="6dp"
-        android:text="Already have an account"
+        android:text="Mam już konto"
         android:textAllCaps="false"
         android:textSize="17dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@color/roz"/>
 
 </RelativeLayout>

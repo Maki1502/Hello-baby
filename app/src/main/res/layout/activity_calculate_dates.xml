@@ -4,33 +4,67 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calcLayout">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@color/background"
         android:orientation="vertical"
         tools:context=".CalculateDates">
 
-        <TextView
-            android:id="@+id/lastPeriod"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/smaticb"
-            android:text="@string/lastPeriod"
-            android:textAlignment="center"
-            android:textSize="38dp"
-            android:gravity="center_horizontal"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lastPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/smaticb"
+                android:text="@string/lastPeriod"
+                android:textAlignment="center"
+                android:textSize="38sp"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:padding="15dp"
+            android:checkedButton="@id/radio_btn_mies">
+
+            <RadioButton
+                android:id="@+id/radio_btn_mies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:text="@string/miesi_czka"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_btn_por"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/por_d"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
 
         <CalendarView
             android:id="@+id/getDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundCal"
             android:firstDayOfWeek="2"
-            android:minDate="01/01/2020"
-            android:background="@color/backgroundCal"/>
+            android:minDate="01/01/2020" />
 
         <Button
             android:id="@+id/calcDatesButton"
@@ -38,14 +72,15 @@
             android:layout_height="wrap_content"
             android:background="@android:color/black"
             android:fontFamily="@font/smaticb"
-            android:text="Oblicz"
-            android:textSize="28dp"
+            android:text="@string/oblicz"
+            android:textSize="28sp"
             android:layout_gravity="center_horizontal"/>
 
         <ScrollView
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="122dp" >
+            android:layout_height="122dp"
+            tools:ignore="NestedScrolling">
 
             <LinearLayout
                 android:layout_width="match_parent"

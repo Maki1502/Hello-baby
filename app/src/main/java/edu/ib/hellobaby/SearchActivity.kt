@@ -8,8 +8,8 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import edu.ib.hellobaby.fragments.SearchLine
-import edu.ib.hellobaby.fragments.SearchModel
+import edu.ib.hellobaby.search.SearchLine
+import edu.ib.hellobaby.search.SearchModel
 import kotlinx.android.synthetic.main.activity_search.*
 
 

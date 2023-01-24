@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SettingsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/shape"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
+
+    <TextView
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="50dp"
+        android:id="@+id/txt"
+        android:text="Zmień dane"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_below="@id/txt"
+        android:layout_marginTop="45dp"
+        android:text="Zaimki:"
+        android:textSize="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/zaimki_spin2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/txt"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@+id/txt1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
+        android:entries="@array/zaimki"
+        android:background="#4AE91E63"/>
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_below="@id/zaimki_spin2"
+        android:layout_marginTop="45dp"
+        android:text="Wiek:"
+        android:textSize="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/wiek_spin2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/zaimki_spin2"
+        android:layout_toRightOf="@+id/txt2"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
+        android:entries="@array/wiek"
+        android:background="#4AE91E63"/>
+
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_below="@id/wiek_spin2"
+        android:layout_marginTop="45dp"
+        android:text="Płeć:"
+        android:textSize="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/plec_spin2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/wiek_spin2"
+        android:layout_toRightOf="@+id/txt3"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
+        android:entries="@array/plec"
+        android:background="#4AE91E63"/>
+
+    <Spinner
+        android:id="@+id/bb_spin2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@id/plec_spin2"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="10dp"
+        android:entries="@array/bb"
+        android:background="#4AE91E63"/>
+
+    <EditText
+        android:id="@+id/bb_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nazwa płodu..."
+        android:layout_below="@id/plec_spin2"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@id/bb_spin2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"/>
+
+    <Button
+        android:id="@+id/save2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bb_name2"
+        android:backgroundTint="@color/roz"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Zapisz"/>
+
+    <Button
+        android:id="@+id/calc2_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save2_btn"
+        android:backgroundTint="@color/roz"
+        android:textColor="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="Zmień datę miesiączki/porodu"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/logout_profile_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Wyloguj"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:backgroundTint="@color/roz"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

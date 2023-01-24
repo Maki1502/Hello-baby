@@ -45,5 +45,4 @@ class NotificationScheduler @Inject constructor(@ApplicationContext private val 
     fun cancelAll() {
         WorkManager.getInstance(context).cancelAllWorkByTag(TAG_REMINDER_WORKER)
     }
-
 }

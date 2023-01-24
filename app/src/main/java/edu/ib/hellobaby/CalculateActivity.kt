@@ -4,21 +4,20 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
 import android.widget.CalendarView
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_calculate_dates.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Period
 import java.util.*
 
-class CalculateDates : AppCompatActivity() {
+class CalculateActivity : AppCompatActivity() {
     @SuppressLint("CommitPrefEdits")
 
     lateinit var radioButton: RadioButton
@@ -56,6 +55,7 @@ class CalculateDates : AppCompatActivity() {
         calcDatesButton.setOnClickListener {
             val dateMillis: Long = getDate.date
             val date = Date(dateMillis)
+            Log.d("data", "$date")
 
             val sdf = SimpleDateFormat("yyyy-MM-dd")
 
@@ -76,6 +76,7 @@ class CalculateDates : AppCompatActivity() {
                 val pregnacyStart = localDate.minus(pregnacy)
                 localDate = pregnacyStart
             }
+            Toast.makeText(baseContext, radioButton.text, Toast.LENGTH_SHORT).show()
 
             val birthDate = localDate.plus(pregnacy)
             val birthDateMillis: Date = sdf.parse(birthDate.toString())
@@ -107,7 +108,7 @@ class CalculateDates : AppCompatActivity() {
             list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
             list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
             // Set adapter to viewPager.
-            datesPager.adapter = PagerAdapter(this, list)
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }
