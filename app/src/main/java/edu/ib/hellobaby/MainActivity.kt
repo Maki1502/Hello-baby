@@ -5,10 +5,11 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
+import edu.ib.hellobaby.notifications.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val DEFAULT_REMINDER_HOUR = 21
@@ -16,11 +17,13 @@ const val DEFAULT_REMINDER_MINUTE = 37
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    private val viewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
-        requestPermissions()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        requestPermissions()
+        viewModel.scheduleReminderNotification(DEFAULT_REMINDER_HOUR, DEFAULT_REMINDER_MINUTE)
 
         baby_btn.setOnClickListener {
             startActivity(Intent(this, BabyLoading::class.java))
