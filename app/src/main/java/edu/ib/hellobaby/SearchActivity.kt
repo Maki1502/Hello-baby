@@ -6,10 +6,10 @@ import android.content.ContentValues.TAG
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import edu.ib.hellobaby.search.SearchLine
-import edu.ib.hellobaby.search.SearchModel
+
 import kotlinx.android.synthetic.main.activity_search.*
 
 
@@ -26,6 +26,8 @@ class SearchActivity : AppCompatActivity() {
             search_view2.hasFixedSize()
             search_view2.layoutManager=LinearLayoutManager(this)
             search_view2.adapter=searchLine
+
+            
         edit_search_2.addTextChangedListener(object:TextWatcher{
 
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -37,7 +39,7 @@ class SearchActivity : AppCompatActivity() {
 
                 private fun searchInFirestore(searchText: String) {
 
-                    firebaseFirestore.collection("week").orderBy("funfact")
+                    firebaseFirestore.collection("week").orderBy("week")
                         .startAt(searchText).endAt("$searchText\uf8ff")
                         .get().addOnCompleteListener {
                             if(it.isSuccessful){
