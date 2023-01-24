@@ -40,9 +40,8 @@ class BookingActivity : AppCompatActivity() {
             var selectedMonthNumber = DateFormat.format("MM", date).toString().toInt()
             selectedMonthNumber -= 1
             val selectedYear = DateFormat.format("yyyy", date).toString().toInt()
-            Log.d("SelectedDate", "$selectedDay oraz ${selectedMonthNumber + 1} oraz $selectedYear")
 
-            val calID: Long = 3
+            val calID: Long = 4
 
             var startMillis: Long
             var endMillis: Long
@@ -82,16 +81,19 @@ class BookingActivity : AppCompatActivity() {
                     put(CalendarContract.Events.EVENT_TIMEZONE, "Europe/Warsaw")
                 }
                 val uri: Uri? = contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
-            }
+                Toast.makeText(this, "Dodano do kalendarza", Toast.LENGTH_SHORT).show()
+            } else {
 
-            val values = ContentValues().apply {
-                put(CalendarContract.Events.DTSTART, startMillis)
-                put(CalendarContract.Events.DTEND, endMillis)
-                put(CalendarContract.Events.TITLE, title)
-                put(CalendarContract.Events.CALENDAR_ID, calID)
-                put(CalendarContract.Events.EVENT_TIMEZONE, "Europe/Warsaw")
+                val values = ContentValues().apply {
+                    put(CalendarContract.Events.DTSTART, startMillis)
+                    put(CalendarContract.Events.DTEND, endMillis)
+                    put(CalendarContract.Events.TITLE, title)
+                    put(CalendarContract.Events.CALENDAR_ID, calID)
+                    put(CalendarContract.Events.EVENT_TIMEZONE, "Europe/Warsaw")
+                }
+                val uri: Uri? = contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
+                Toast.makeText(this, "Dodano do kalendarza", Toast.LENGTH_SHORT).show()
             }
-            val uri: Uri? = contentResolver.insert(CalendarContract.Events.CONTENT_URI, values)
         }
     }
 

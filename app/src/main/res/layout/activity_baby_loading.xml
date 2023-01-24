@@ -33,14 +33,16 @@
         android:id="@+id/loadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/smaticsc"
+        android:fontFamily="@font/smaticb"
         android:text="Wprowadź datę miesiączki"
-        android:textSize="32dp"
+        android:textAlignment="center"
+        android:textColor="#0C0C0C"
+        android:textSize="42dp"
         app:layout_constraintBottom_toTopOf="@+id/cryImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
         android:id="@+id/cryImage"

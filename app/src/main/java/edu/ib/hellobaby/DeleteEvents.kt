@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_baby_loading.*
 import kotlinx.android.synthetic.main.activity_booking.*
 import kotlinx.android.synthetic.main.activity_delete_events.*
 import java.text.SimpleDateFormat
@@ -32,6 +33,13 @@ class DeleteEvents : AppCompatActivity() {
         val date1 = sharedPreference.getLong("periodDate", 0)
         val date2 = sharedPreference.getLong("birthMillis", 0)
         Log.d("DATY", "$date1   $date2")
+
+        val sharedSettings =  getSharedPreferences("shareddane", Context.MODE_PRIVATE)
+        val parentGender = sharedSettings.getString("plec", "null")
+/*
+        if (parentGender == "Wyborca konfederacji") {
+            loadingText.text = "Zapraszam"
+        }*/
 
         val utility = Utility.readCalendarEvent(this, date1, date2)
         val events = utility.first
@@ -59,6 +67,8 @@ class DeleteEvents : AppCompatActivity() {
         private var nameOfEvent = ArrayList<String>()
         private var startDates = ArrayList<String>()
         private var idOfEvents = ArrayList<String>()
+        private var calID = ArrayList<String>()
+        private var description = ArrayList<String>()
 
         @SuppressLint("Recycle")
         fun readCalendarEvent(context: Context, startTime: Long?, endTime: Long?): Triple<ArrayList<String>, ArrayList<String>, ArrayList<String>> {
@@ -82,15 +92,17 @@ class DeleteEvents : AppCompatActivity() {
             nameOfEvent.clear()
             startDates.clear()
             idOfEvents.clear()
+            calID.clear()
+            description.clear()
             for (i in cNames.indices) {
                 nameOfEvent.add(cursor.getString(1))
                 startDates.add(getDate(cursor.getString(3).toLong()))
                 idOfEvents.add(cursor.getString(6))
+                calID.add(cursor.getString(0))
+                description.add(cursor.getString(2))
                 cNames[i] = cursor.getString(1)
                 cursor.moveToNext()
             }
-
-            Log.d("NAME OF EVENTS", "$nameOfEvent")
 
             val temporaryListEvents = ArrayList<String>()
             val temporaryListDates = ArrayList<String>()
@@ -112,9 +124,12 @@ class DeleteEvents : AppCompatActivity() {
                     || (item == "Porada laktacyjna")
                     || (item == "Badania laboraotryjne")
                     || (item == "Test ryzyka porodu przedwczesnego")
-                    || (item == "Inne")
                 ) {
                     temporaryListEvents.add(item)
+                    temporaryListDates.add(startDates[i])
+                    temporaryListId.add(idOfEvents[i])
+                } else if (item == "Inne") {
+                    temporaryListEvents.add(description[i])
                     temporaryListDates.add(startDates[i])
                     temporaryListId.add(idOfEvents[i])
                 }
@@ -147,16 +162,16 @@ class DeleteEvents : AppCompatActivity() {
         checkBox.setPadding(20, 20, 20, 20)
         checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) checkBoxes.add(checkBox.id.toString())
-            val msg = "You have " + (if (isChecked) "checked" else "unchecked") + " this Checkbox."
+            // val msg = "You have " + (if (isChecked) "checked" else "unchecked") + " this Checkbox."
             // Toast.makeText(this@DeleteEvents, msg, Toast.LENGTH_SHORT).show()
         }
         // Add CheckBox to LinearLayout
         checkBoxContainer.addView(checkBox)
     }
 
-    fun deleteEvents(evID: String) {
+    private fun deleteEvents(evID: String) {
         val eventID:Long = evID.toLong()
-        Log.d("EVID", "$eventID")
+        Log.d("EV_ID", "$eventID")
         val deleteUri: Uri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, eventID)
         val rows: Int = contentResolver.delete(deleteUri, null, null)
     }

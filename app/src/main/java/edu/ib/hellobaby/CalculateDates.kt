@@ -56,7 +56,6 @@ class CalculateDates : AppCompatActivity() {
         calcDatesButton.setOnClickListener {
             val dateMillis: Long = getDate.date
             val date = Date(dateMillis)
-            Log.d("data", "$date")
 
             val sdf = SimpleDateFormat("yyyy-MM-dd")
 
@@ -77,7 +76,6 @@ class CalculateDates : AppCompatActivity() {
                 val pregnacyStart = localDate.minus(pregnacy)
                 localDate = pregnacyStart
             }
-            Toast.makeText(baseContext, radioButton.text, Toast.LENGTH_SHORT).show()
 
             val birthDate = localDate.plus(pregnacy)
             val birthDateMillis: Date = sdf.parse(birthDate.toString())

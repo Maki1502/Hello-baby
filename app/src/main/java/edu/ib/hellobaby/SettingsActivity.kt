@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -24,8 +25,7 @@ class SettingsActivity : AppCompatActivity() {
         wiek_spin2.setSelection(sharedPreference.getInt("wiekSel",0))
         plec_spin2.setSelection(sharedPreference.getInt("plecSel",0))
         bb_spin2.setSelection(sharedPreference.getInt("imieSel",0))
-        bb_name2.setText(sharedPreference.getString("nazwa","nn"))
-
+        bb_name2.setText(sharedPreference.getString("nazwa","null"))
 
         save2_btn.setOnClickListener {
 
@@ -36,7 +36,10 @@ class SettingsActivity : AppCompatActivity() {
             val plec = plec_spin2.selectedItem.toString()
             val plecPos = plec_spin2.selectedItemPosition
             val imiePos = bb_spin2.selectedItemPosition
+            val plecDziecka = bb_spin2.selectedItem.toString()
             val imie = bb_name2.text.toString()
+
+            Log.d("plec dziecka", "$plecDziecka")
 
             val editor: SharedPreferences.Editor =  sharedPreference.edit()
             editor.putString("zaimki",zaimki)
@@ -47,6 +50,7 @@ class SettingsActivity : AppCompatActivity() {
             editor.putInt("plecSel",plecPos)
             editor.putInt("imieSel",imiePos)
             editor.putString("nazwa",imie)
+            editor.putString("plecDziecka", plecDziecka)
             editor.apply()
             editor.commit()
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_baby_loading.*
@@ -22,8 +23,13 @@ class BabyLoading : AppCompatActivity() {
 
         val sharedPrefFile = "kotlinsharedpreference"
         val sharedPreference =  getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        val sexDate = sharedPreference.getString("sexDate", "nn")
-        if (sexDate == "nn") {
+        val sexDate = sharedPreference.getString("sexDate", "null")
+
+        val sharedSettings =  getSharedPreferences("shareddane", Context.MODE_PRIVATE)
+        val babyName = sharedSettings.getString("nazwa", "null")
+        val gender = sharedSettings.getString("plecDziecka", "null")
+
+        if (sexDate == "null") {
             Toast.makeText(applicationContext, "Wprowadź datę miesiączki", Toast.LENGTH_LONG ).show()
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
@@ -38,7 +44,18 @@ class BabyLoading : AppCompatActivity() {
         val mDifferenceDates = mDifference / (24 * 60 * 60 * 1000)
         val mDayDifference = mDifferenceDates.toString()
         val babyLoading = 100 * mDayDifference.toInt() / 270
-        loadingText.text = "Twój płód jest gotowy w $babyLoading%"
+
+        var message:String
+
+        if (gender == "Ten") {
+            message = "Twój $babyName jest gotowy w $babyLoading%."
+        } else if (gender == "Ta") {
+            message = "Twoja $babyName jest gotowa w $babyLoading%."
+        } else if (gender == "To") {
+            message = "Twoje $babyName jest gotowe w $babyLoading%"
+        } else message = "Twój płód jest gotowy w $babyLoading"
+
+        loadingText.text = message
 
         val imageLevel = 10000 * mDayDifference.toInt()/270
 

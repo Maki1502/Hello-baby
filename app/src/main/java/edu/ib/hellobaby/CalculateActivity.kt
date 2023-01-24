@@ -51,10 +51,6 @@ class CalculateActivity : AppCompatActivity() {
             calView.setDate(calender.timeInMillis, true, true)
         }
 
-        returnButton.setOnClickListener {
-
-        }
-
         // Function to get date from calendar
         calcDatesButton.setOnClickListener {
             val dateMillis: Long = getDate.date
