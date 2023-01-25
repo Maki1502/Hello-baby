@@ -27,7 +27,11 @@ class CalculateActivity : AppCompatActivity() {
 
         val sharedPrefFile = "kotlinsharedpreference"
         val sharedPreference =  getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        val x = sharedPreference.getString("birthDate", "nn")
+
+        val editShared: SharedPreferences.Editor =  sharedPreference.edit()
+        editShared.clear()
+        editShared.commit()
+     /*   val x = sharedPreference.getString("birthDate", "nn")
         val y = sharedPreference.getString("genderRevealDate", "nn")
         val z1 = sharedPreference.getString("babyShowerDate", "nn")
         val z2 = sharedPreference.getString("babyShowerMax", "nn")
@@ -39,7 +43,7 @@ class CalculateActivity : AppCompatActivity() {
             list.add("Oświadczyny płciowe możesz zorganizować po: $y")
             // Set adapter to viewPager.
             datesPager.adapter = PagerAdapter(this, list)
-        }
+        }*/
 
         // Function to get actual date from system calendar
         getDate.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
@@ -103,10 +107,10 @@ class CalculateActivity : AppCompatActivity() {
             editor.apply()
             editor.commit()
 
-            val list: MutableList<String> = ArrayList()
+            /*val list: MutableList<String> = ArrayList()
             list.add("Spodziewana data porodu to: $birthDate")
             list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
-            list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
+            list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")*/
             // Set adapter to viewPager.
             startActivity(Intent(this, MainActivity::class.java))
         }

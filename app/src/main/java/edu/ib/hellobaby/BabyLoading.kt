@@ -31,35 +31,37 @@ class BabyLoading : AppCompatActivity() {
 
         if (sexDate == "null") {
             Toast.makeText(applicationContext, "Wprowadź datę miesiączki", Toast.LENGTH_LONG ).show()
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,CalculateDates::class.java)
             startActivity(intent)
+        } else {
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+
+            val current = LocalDate.now().toString()
+
+            val sexDate1 = sdf.parse(sexDate)
+            val currentDate = sdf.parse(current)
+            val mDifference = kotlin.math.abs(currentDate.time - sexDate1.time)
+            val mDifferenceDates = mDifference / (24 * 60 * 60 * 1000)
+            val mDayDifference = mDifferenceDates.toString()
+            val babyLoading = 100 * mDayDifference.toInt() / 270
+
+            var message:String
+
+            if (gender == "Ten") {
+                message = "Twój $babyName jest gotowy w $babyLoading%."
+            } else if (gender == "Ta") {
+                message = "Twoja $babyName jest gotowa w $babyLoading%."
+            } else if (gender == "To") {
+                message = "Twoje $babyName jest gotowe w $babyLoading%"
+            } else message = "Twój płód jest gotowy w $babyLoading%"
+
+            loadingText.text = message
+
+            val imageLevel = 10000 * mDayDifference.toInt()/270
+
+            val mImageDrawable = cryImage.drawable as ClipDrawable
+            mImageDrawable.level = imageLevel
         }
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
 
-        val current = LocalDate.now().toString()
-
-        val sexDate1 = sdf.parse(sexDate)
-        val currentDate = sdf.parse(current)
-        val mDifference = kotlin.math.abs(currentDate.time - sexDate1.time)
-        val mDifferenceDates = mDifference / (24 * 60 * 60 * 1000)
-        val mDayDifference = mDifferenceDates.toString()
-        val babyLoading = 100 * mDayDifference.toInt() / 270
-
-        var message:String
-
-        if (gender == "Ten") {
-            message = "Twój $babyName jest gotowy w $babyLoading%."
-        } else if (gender == "Ta") {
-            message = "Twoja $babyName jest gotowa w $babyLoading%."
-        } else if (gender == "To") {
-            message = "Twoje $babyName jest gotowe w $babyLoading%"
-        } else message = "Twój płód jest gotowy w $babyLoading"
-
-        loadingText.text = message
-
-        val imageLevel = 10000 * mDayDifference.toInt()/270
-
-        val mImageDrawable = cryImage.drawable as ClipDrawable
-        mImageDrawable.level = imageLevel
     }
 }

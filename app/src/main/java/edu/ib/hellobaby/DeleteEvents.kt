@@ -18,9 +18,13 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_baby_loading.*
 import kotlinx.android.synthetic.main.activity_booking.*
 import kotlinx.android.synthetic.main.activity_delete_events.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.system.measureTimeMillis
 
 class DeleteEvents : AppCompatActivity() {
     var checkBoxes = ArrayList<String>()
@@ -52,12 +56,14 @@ class DeleteEvents : AppCompatActivity() {
         }
 
         del_btn.setOnClickListener {
+            Toast.makeText(this, "Wydarzenia zostaną usunięte za około minutę...", Toast.LENGTH_LONG).show()
             Log.d("checkBoxes", "$checkBoxes")
             val eventID = checkBoxes.distinct()
             Log.d("NOWA LISTA", "$eventID")
             for (items in eventID) {
                 deleteEvents(items)
             }
+            wait5sec()
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
@@ -174,5 +180,24 @@ class DeleteEvents : AppCompatActivity() {
         Log.d("EV_ID", "$eventID")
         val deleteUri: Uri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, eventID)
         val rows: Int = contentResolver.delete(deleteUri, null, null)
+    }
+
+    private fun wait5sec() {
+        var time: Long? = null
+        var job1 = GlobalScope.launch() {
+            println("Coroutine ${Thread.currentThread().name}")
+            time = measureTimeMillis {
+                Thread.sleep(1000)
+                Thread.sleep(1000)
+                Thread.sleep(1000)
+            }
+
+        }
+        println("Thread ${Thread.currentThread().name}")
+
+        runBlocking {
+            job1.join()
+            println("Proccesed time is $time")
+        }
     }
 }
