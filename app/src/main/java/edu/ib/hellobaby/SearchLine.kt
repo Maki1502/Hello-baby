@@ -1,4 +1,5 @@
-package edu.ib.hellobaby.search
+package edu.ib.hellobaby
+
 
 import android.view.LayoutInflater
 import android.view.View
