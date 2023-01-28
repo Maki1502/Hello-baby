@@ -7,11 +7,14 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
+import android.view.View
 import android.widget.CalendarView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_calculate_dates.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -39,6 +42,7 @@ class CalculateDates : AppCompatActivity() {
             list.add("Baby shower zorganizuj pomiędzy:   $z1   a   $z2")
             list.add("Oświadczyny płciowe możesz zorganizować po: $y")
             // Set adapter to viewPager.
+            card_view.visibility = View.VISIBLE
             datesPager.adapter = PagerAdapter(this, list)
         }
 
@@ -107,6 +111,7 @@ class CalculateDates : AppCompatActivity() {
             list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
             list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")
             // Set adapter to viewPager.
+            card_view.visibility = View.VISIBLE
             datesPager.adapter = PagerAdapter(this, list)
         }
     }

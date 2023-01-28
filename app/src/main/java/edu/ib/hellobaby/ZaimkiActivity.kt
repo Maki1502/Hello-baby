@@ -5,9 +5,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.activity_zaimki.*
 
@@ -39,20 +41,25 @@ class ZaimkiActivity : AppCompatActivity() {
             val imie = bb_name.text.toString()
             val plecDziecka = bb_spin.selectedItem.toString()
 
-            val editor: SharedPreferences.Editor =  sharedPreference.edit()
-            editor.putString("zaimki",zaimki)
-            editor.putInt("zaimkiSel",zaimkiPos)
-            editor.putString("wiek",wiek)
-            editor.putInt("wiekSel",wiekPos)
-            editor.putString("plec",plec)
-            editor.putInt("plecSel",plecPos)
-            editor.putInt("imieSel",imiePos)
-            editor.putString("nazwa",imie)
-            editor.putString("plecDziecka", plecDziecka)
-            editor.apply()
-            editor.commit()
+            when {
+                TextUtils.isEmpty(imie) -> Toast.makeText(this, "wpisz nazwę", Toast.LENGTH_LONG).show()
+                else -> {
+                    val editor: SharedPreferences.Editor =  sharedPreference.edit()
+                    editor.putString("zaimki",zaimki)
+                    editor.putInt("zaimkiSel",zaimkiPos)
+                    editor.putString("wiek",wiek)
+                    editor.putInt("wiekSel",wiekPos)
+                    editor.putString("plec",plec)
+                    editor.putInt("plecSel",plecPos)
+                    editor.putInt("imieSel",imiePos)
+                    editor.putString("nazwa",imie)
+                    editor.putString("plecDziecka", plecDziecka)
+                    editor.apply()
+                    editor.commit()
 
-            startActivity(Intent(this, CalculateActivity::class.java))
+                    startActivity(Intent(this, CalculateActivity::class.java))
+                }
+            }
         }
     }
 }

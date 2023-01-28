@@ -31,7 +31,7 @@ class BabyLoading : AppCompatActivity() {
 
         if (sexDate == "null") {
             Toast.makeText(applicationContext, "Wprowadź datę miesiączki", Toast.LENGTH_LONG ).show()
-            val intent = Intent(this,CalculateDates::class.java)
+            val intent = Intent(this,CalculateActivity::class.java)
             startActivity(intent)
         } else {
             val sdf = SimpleDateFormat("yyyy-MM-dd")

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rozBack"
     tools:context=".BabyLoading">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,45 +12,63 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="@drawable/shape"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/white"
-        tools:ignore="MissingConstraints" />
+        app:titleTextColor="@color/white" />
 
-    <ImageButton
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/smaticsc"
+        android:text="HELLoBABY"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="55dp" />
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/settings_btn"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:src="@drawable/calendar"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        android:adjustViewBounds="true"/>-->
+
+    <ImageView
         android:id="@+id/settings_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="right"
-        android:background="@drawable/gear"
-        android:drawableBottom="@drawable/gear"
-        app:layout_constraintBottom_toTopOf="@+id/loadingText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/cog2"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="20dp"/>
+
+
+<!--        android:background="@drawable/gear"-->
+<!--        android:drawableBottom="@drawable/gear" />-->
 
     <TextView
         android:id="@+id/loadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/smaticb"
         android:text="Odśwież stronę"
         android:textAlignment="center"
-        android:textColor="#0C0C0C"
-        android:textSize="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/cryImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:textColor="@color/black"
+        android:textSize="42dp" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/cryImage"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/clip_source" />
+        android:layout_below="@id/loadingText"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/clip_source" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

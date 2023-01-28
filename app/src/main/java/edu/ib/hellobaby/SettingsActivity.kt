@@ -5,10 +5,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.activity_zaimki.*
 
@@ -19,6 +25,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        firebaseUser = FirebaseAuth.getInstance().currentUser!!
 
         val sharedPreference =  getSharedPreferences("shareddane", Context.MODE_PRIVATE)
         zaimki_spin2.setSelection(sharedPreference.getInt("zaimkiSel",0))
@@ -57,7 +64,6 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this, "Dane zostały zaktualizowane", Toast.LENGTH_LONG).show()
         }
 
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
         logout_profile_btn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
 
@@ -70,5 +76,19 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, CalculateDates::class.java))
         }
 
+        destruction_btn.setOnClickListener {
+
+            deleteSharedPreferences("shareddane")
+            deleteSharedPreferences("kotlinsharedpreference")
+
+            Toast.makeText(this, "Dane zostały usunięte", Toast.LENGTH_LONG).show()
+
+            FirebaseAuth.getInstance().signOut()
+
+            val intent = Intent(this, SignInActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+
+        }
     }
 }

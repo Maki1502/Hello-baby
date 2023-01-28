@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/calcLayout">
+    android:id="@+id/calcLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/background"
+        android:background="@color/rozBack"
         android:orientation="vertical"
         tools:context=".CalculateDates">
 
@@ -25,10 +24,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/smaticb"
+                android:gravity="center_horizontal"
                 android:text="@string/lastPeriod"
                 android:textAlignment="center"
-                android:textSize="38sp"
-                android:gravity="center_horizontal"/>
+                android:textColor="@color/black"
+                android:textSize="38sp" />
 
         </LinearLayout>
 
@@ -36,9 +36,8 @@
             android:id="@+id/radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:padding="15dp"
-            android:checkedButton="@id/radio_btn_mies">
+            android:checkedButton="@id/radio_btn_mies"
+            android:padding="15dp">
 
             <RadioButton
                 android:id="@+id/radio_btn_mies"
@@ -46,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center"
                 android:text="@string/miesi_czka"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <RadioButton
@@ -53,34 +53,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/por_d"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
         </RadioGroup>
 
-
-        <CalendarView
-            android:id="@+id/getDate"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/backgroundCal"
-            android:firstDayOfWeek="2"
-            android:minDate="01/01/2020" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="18dp">
+
+            <CalendarView
+                android:id="@+id/getDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/rozTint"
+                android:firstDayOfWeek="2"
+                android:minDate="01/01/2020" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/calcDatesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/roz"
             android:fontFamily="@font/smaticb"
             android:text="@string/oblicz"
-            android:textSize="28sp"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="@color/white"
+            android:textSize="28sp" />
 
         <ScrollView
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="122dp"
             tools:ignore="NestedScrolling">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/roz"
+                android:layout_margin="5dp"
+                android:visibility="invisible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,7 +115,7 @@
                     android:orientation="horizontal"/>
 
             </LinearLayout>
-
+            </androidx.cardview.widget.CardView>
         </ScrollView>
 
     </LinearLayout>

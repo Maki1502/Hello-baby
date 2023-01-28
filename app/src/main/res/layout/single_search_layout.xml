@@ -7,20 +7,30 @@
     android:layout_marginTop="10dp"
     android:layout_marginLeft="50dp"
     android:layout_marginRight="50dp"
-    android:layout_centerHorizontal="true"
-    android:background="#4AE91E63">
+    android:layout_centerHorizontal="true">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/rozTint2"
+        app:cardCornerRadius="18dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/single_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ciekawostka"/>
+            android:text="Ciekawostka"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
 
     </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

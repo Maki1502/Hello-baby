@@ -31,19 +31,6 @@ class CalculateActivity : AppCompatActivity() {
         val editShared: SharedPreferences.Editor =  sharedPreference.edit()
         editShared.clear()
         editShared.commit()
-     /*   val x = sharedPreference.getString("birthDate", "nn")
-        val y = sharedPreference.getString("genderRevealDate", "nn")
-        val z1 = sharedPreference.getString("babyShowerDate", "nn")
-        val z2 = sharedPreference.getString("babyShowerMax", "nn")
-
-        if (x!="nn" && y!="nn" && z1!="nn" && z2!="nn") {
-            val list: MutableList<String> = ArrayList()
-            list.add("Spodziewana data porodu to: $x")
-            list.add("Baby shower zorganizuj pomiędzy:   $z1   a   $z2")
-            list.add("Oświadczyny płciowe możesz zorganizować po: $y")
-            // Set adapter to viewPager.
-            datesPager.adapter = PagerAdapter(this, list)
-        }*/
 
         // Function to get actual date from system calendar
         getDate.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
@@ -80,7 +67,7 @@ class CalculateActivity : AppCompatActivity() {
                 val pregnacyStart = localDate.minus(pregnacy)
                 localDate = pregnacyStart
             }
-            Toast.makeText(baseContext, radioButton.text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, "Obliczono datę", Toast.LENGTH_SHORT).show()
 
             val birthDate = localDate.plus(pregnacy)
             val birthDateMillis: Date = sdf.parse(birthDate.toString())
@@ -107,11 +94,6 @@ class CalculateActivity : AppCompatActivity() {
             editor.apply()
             editor.commit()
 
-            /*val list: MutableList<String> = ArrayList()
-            list.add("Spodziewana data porodu to: $birthDate")
-            list.add("Baby shower zorganizuj pomiędzy:   $babyShower   a   $babyShowerMax")
-            list.add("Oświadczyny płciowe możesz zorganizować po: $genderReveal")*/
-            // Set adapter to viewPager.
             startActivity(Intent(this, MainActivity::class.java))
         }
     }

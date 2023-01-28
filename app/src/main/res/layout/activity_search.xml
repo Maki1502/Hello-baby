@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rozBack"
     tools:context=".SearchActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4AE91E63">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/search_toolbar"
@@ -47,7 +47,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/app_bar_layout_search"
-        android:background="#4AE91E63"
-        tools:listitem="@layout/single_search_layout"/>
+        tools:listitem="@layout/single_search_layout" />
 
 </RelativeLayout>

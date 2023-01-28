@@ -125,4 +125,9 @@
         <item>Ta</item>
         <item>To</item>
     </string-array>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

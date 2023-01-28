@@ -1,124 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rozBack"
     tools:context=".ZaimkiActivity">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="@drawable/shape"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/white" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="50dp"
-        android:id="@+id/txt"
-        android:text="Podaj dane"
-        android:textSize="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/shape"
+            app:titleTextColor="@color/white" />
 
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_below="@id/txt"
-        android:layout_marginTop="45dp"
-        android:text="Zaimki:"
-        android:textSize="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/smaticsc"
+            android:text="HELLoBABY"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="55dp" />
 
-    <Spinner
-        android:id="@+id/zaimki_spin"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/txt"
-        android:layout_marginTop="45dp"
-        android:layout_toRightOf="@+id/txt1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="50dp"
-        android:entries="@array/zaimki"
-        android:background="#4AE91E63"/>
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Podaj dane"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/txt2"
-        android:layout_below="@id/zaimki_spin"
-        android:layout_marginTop="45dp"
-        android:text="Wiek:"
-        android:textSize="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="45dp"
+            android:text="Zaimki:"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
 
-    <Spinner
-        android:id="@+id/wiek_spin"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/zaimki_spin"
-        android:layout_toRightOf="@+id/txt2"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="50dp"
-        android:entries="@array/wiek"
-        android:background="#4AE91E63"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/txt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="50dp"
+            android:layout_toRightOf="@+id/txt1"
+            android:backgroundTint="@color/rozTint2"
+            app:cardCornerRadius="18dp">
 
-    <TextView
-        android:id="@+id/txt3"
-        android:layout_below="@id/wiek_spin"
-        android:layout_marginTop="45dp"
-        android:text="Płeć:"
-        android:textSize="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <Spinner
+                android:id="@+id/zaimki_spin"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:entries="@array/zaimki" />
 
-    <Spinner
-        android:id="@+id/plec_spin"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/wiek_spin"
-        android:layout_toRightOf="@+id/txt3"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="50dp"
-        android:entries="@array/plec"
-        android:background="#4AE91E63"/>
+        </androidx.cardview.widget.CardView>
 
-    <Spinner
-        android:id="@+id/bb_spin"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_below="@id/plec_spin"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="10dp"
-        android:entries="@array/bb"
-        android:background="#4AE91E63"/>
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="45dp"
+            android:text="Wiek:"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
 
-    <EditText
-        android:id="@+id/bb_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Nazwa płodu..."
-        android:layout_below="@id/plec_spin"
-        android:layout_marginTop="45dp"
-        android:layout_toRightOf="@id/bb_spin"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="50dp"/>
-    <Button
-        android:id="@+id/save1_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bb_name"
-        android:backgroundTint="@color/backgroundCal"
-        android:layout_margin="50dp"
-        android:text="Zapisz"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/card1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="50dp"
+            android:layout_toRightOf="@+id/txt2"
+            android:backgroundTint="@color/rozTint2"
+            app:cardCornerRadius="18dp">
 
-</RelativeLayout>
+            <Spinner
+                android:id="@+id/wiek_spin"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:entries="@array/wiek" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="45dp"
+            android:text="Płeć:"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/card2"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="50dp"
+            android:layout_toRightOf="@+id/txt3"
+            android:backgroundTint="@color/rozTint2"
+            app:cardCornerRadius="18dp">
+
+            <Spinner
+                android:id="@+id/plec_spin"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:entries="@array/plec" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card4"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@id/card3"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/rozTint2"
+            app:cardCornerRadius="18dp">
+
+            <Spinner
+                android:id="@+id/bb_spin"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:entries="@array/bb" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/bb_name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card3"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="45dp"
+            android:layout_toRightOf="@id/card4"
+            android:hint="Nazwa płodu..."
+            android:inputType="text"
+            android:maxLength="20"
+            android:textColor="@color/black" />
+
+
+        <Button
+            android:id="@+id/save1_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bb_name"
+            android:layout_margin="50dp"
+            android:backgroundTint="@color/roz"
+            android:text="Zapisz" />
+
+    </RelativeLayout>
+</ScrollView>

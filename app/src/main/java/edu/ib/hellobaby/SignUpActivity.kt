@@ -32,13 +32,13 @@ class SignUpActivity : AppCompatActivity() {
         val password = password_signup.text.toString()
 
         when {
-            TextUtils.isEmpty(email) -> Toast.makeText(this, "email is required", Toast.LENGTH_LONG).show()
-            TextUtils.isEmpty(password) -> Toast.makeText(this, "password is required", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(email) -> Toast.makeText(this, "potrzebny e-mail", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(password) -> Toast.makeText(this, "potrzebne hasło", Toast.LENGTH_LONG).show()
 
             else -> {
                 val progressDialog = ProgressDialog(this@SignUpActivity)
-                progressDialog.setTitle("SignUp")
-                progressDialog.setMessage("Pleas wait, this may take a while...")
+                progressDialog.setTitle("Rejestracja")
+                progressDialog.setMessage("Proszę czekać, to może zająć chwilę...")
                 progressDialog.setCanceledOnTouchOutside(false)
                 progressDialog.show()
 
@@ -72,7 +72,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     progressDialog.dismiss()
-                    Toast.makeText(this, "Account has been created successfully.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Konto zarejestrowane", Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this@SignUpActivity, ZaimkiActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
