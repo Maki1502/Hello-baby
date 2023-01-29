@@ -62,6 +62,5 @@ class BabyLoading : AppCompatActivity() {
             val mImageDrawable = cryImage.drawable as ClipDrawable
             mImageDrawable.level = imageLevel
         }
-
     }
 }

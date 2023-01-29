@@ -30,14 +30,14 @@ class Notifications: BroadcastReceiver() {
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
             val builder = NotificationCompat.Builder(context, channelID)
-                .setSmallIcon(R.drawable.baby_shower)
+                .setSmallIcon(R.drawable.baby)
                 .setContentTitle("Alarm is running")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setDefaults(NotificationCompat.DEFAULT_SOUND)
                 .setDefaults(NotificationCompat.DEFAULT_VIBRATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .addAction(R.drawable.baby_shower,"Stop",pendingIntent)
+                .addAction(R.drawable.baby,"Stop",pendingIntent)
                 .setContentIntent(pendingIntent)
 
             val notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
